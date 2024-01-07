@@ -2,10 +2,9 @@
   "name": "sonu",
   "version": "1.0.0",
   "description": "Making it for personal purpose ",
-  "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon -r dotenv/config --experimental-json-modules src/database.js"
+    
   },
   "author": "",
   "license": "ISC",

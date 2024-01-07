@@ -1,56 +1,71 @@
-import dotenv from "dotenv"
-import connectDb from "./db/database.js";
-
-// const app = express()
+// import dotenv from "dotenv"
+const dotenv = require('dotenv').config();
+// import connectDb from "./db/database.js";
+const connectDb = require('./db/database.js')
+const express = require('express')
+const mongoose = require('mongoose')
+const app = express()
 
 // function connectDb(){}
 // connectDb()
 
 //  we can improve it by the IIFE function in Js 
 
-dotenv.config({
-    path :'./env'
+// dotenv.config({
+//     path :'./env'
+// })
+
+
+// connectDb()
+// .then(() => {
+//     app.listen(process.env.PORT || 8000, () => {
+//         console.log(`⚙️ Server is running at port : ${process.env.PORT}`);
+//     })
+// })
+// .catch((err) => {
+//     console.log("MONGO db connection failed !!! ", err);
+// })
+
+
+const uri = 'mongodb+srv://sonustar:sonu@cluster01.txijc0h.mongodb.net/';
+
+
+mongoose.connect(uri)
+.then(function(db){
+    console.log('db connected')
 })
+.catch(function(err){
+    console.log(err)
+});
+
+mongoose.connection.once('open', function () {
+    console.log('Connection to MongoDB established.');
+});
 
 
-connectDb()
-.then(() => {
-    app.listen(process.env.PORT || 8000, () => {
-        console.log(`⚙️ Server is running at port : ${process.env.PORT}`);
-    })
-})
-.catch((err) => {
-    console.log("MONGO db connection failed !!! ", err);
-})
+// //Approach 1 :
 
-
-
-
-/*
-//Approach 1 :
-
-( async  ()=>{
+// ( async  ()=>{
     
-    try {
+//     try {
 
-// MONGODB_URL : we get this from .env
+// // MONGODB_URL : we get this from .env
 
-    await mongoose.connect(`${process.env.MONGODB_URL}/${DB_NAME}`)
-    app.on("error",(error)=>{
-        console.log(error);
-        throw error
-    })
+//     await mongoose.connect(`${process.env.MONGODB_URL}/${DB_NAME}`)
+//     app.on("error",(error)=>{
+//         console.log(error);
+//         throw error
+//     })
     
-    app.listen(process.env.PORT,()=>{
-        console.log(`App is listening at ${process.env.PORT}`);
-    })
+//     app.listen(process.env.PORT,()=>{
+//         console.log(`App is listening at ${process.env.PORT}`);
+//     })
 
-    } catch (error) {
+//     } catch (error) {
      
-        // console.log() or console.error()
-        console.log("Error : ",error)
-    }
+//         // console.log() or console.error()
+//         console.log("Error : ",error)
+//     }
 
-})()
+// })()
 
-*/

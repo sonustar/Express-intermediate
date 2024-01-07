@@ -1,1 +1,3 @@
-export const DB_NAME = "happy"
+const DB_NAME = "happy-man"
+
+module.exports = DB_NAME

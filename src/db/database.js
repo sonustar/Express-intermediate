@@ -1,24 +1,23 @@
 //tumko algo laaga na sikho 
 
 // connect mongoose 
-import mongoose  from "mongoose";
+// import mongoose  from "mongoose";
+// const mongoose = require('mongoose')
 
 //Database name 
-import { DB_NAME } from "../constants.js";
+// import { DB_NAME } from "../constants.js";
+// const DB_NAME = require('../constants.js')
 
-const connectDb = (async ()=>{
-    
-    try {
+// const uri = 'mongodb+srv://sonustar:sonu@cluster01.txijc0h.mongodb.net/';
 
-    const Instance = await mongoose.connect(`${process.env.MONGODB_URL}/${DB_NAME}`)
 
-    console.log(`MONGODB is connected ${Instance.connection.host}`);
-        
-    } catch (error) {
-        console.log("DataBase Failed ", error)
-        process.exit(1)
-    }
+// const connectDb =mongoose.connect(uri)
+// .then(function(db){
+//     console.log('db connected')
+// })
+// .catch(function(err){
+//     console.log(err)
+// });
 
-})
 
-export default connectDb 
+// module.exports = connectDb
