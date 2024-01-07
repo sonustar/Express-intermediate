@@ -1,20 +1,27 @@
-const mongoose = require("mongoose");
-import {DB_NAME} from "./constants"
+import dotenv from "dotenv"
+import connectDb from "./db/database.js";
 
-import express from "express";
-
-
-const app = express()
+// const app = express()
 
 // function connectDb(){}
 // connectDb()
 
 //  we can improve it by the IIFE function in Js 
 
+dotenv.config({
+    path :'./env'
+})
 
 
-
-
+connectDb()
+.then(() => {
+    app.listen(process.env.PORT || 8000, () => {
+        console.log(`⚙️ Server is running at port : ${process.env.PORT}`);
+    })
+})
+.catch((err) => {
+    console.log("MONGO db connection failed !!! ", err);
+})
 
 
 
